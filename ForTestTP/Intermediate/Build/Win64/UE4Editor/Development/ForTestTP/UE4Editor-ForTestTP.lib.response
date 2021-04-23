@@ -1,0 +1,18 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-ForTestTP.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Development\ForTestTP\ForTestTP.cpp.obj"
+"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Development\ForTestTP\ForTestTPCharacter.cpp.obj"
+"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Development\ForTestTP\ForTestTPGameMode.cpp.obj"
+"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Development\ForTestTP\ForTestTP.init.gen.cpp.obj"
+"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Development\ForTestTP\ForTestTPCharacter.gen.cpp.obj"
+"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Development\ForTestTP\ForTestTPGameMode.gen.cpp.obj"
+"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Development\ForTestTP\Default.rc2.res"
+/OUT:"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Development\ForTestTP\UE4Editor-ForTestTP.lib"
+/INCLUDE:IMPLEMENT_MODULE_ForTestTP

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\ForTestTP.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{90C25533-95AC-4442-BA9F-DD02451F4443}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ForTestTP.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\ForTestTPEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{7135E022-7F91-4567-B8DA-8F402797C37A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\ForTestTP">
+      <UniqueIdentifier>{08EB4B9E-1E4E-4A4A-96E9-6912B1259A0B}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ForTestTP\ForTestTP.Build.cs">
+      <Filter>Source\ForTestTP</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\ForTestTP\ForTestTP.cpp">
+      <Filter>Source\ForTestTP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ForTestTP\ForTestTP.h">
+      <Filter>Source\ForTestTP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ForTestTP\ForTestTPCharacter.cpp">
+      <Filter>Source\ForTestTP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ForTestTP\ForTestTPCharacter.h">
+      <Filter>Source\ForTestTP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ForTestTP\ForTestTPGameMode.cpp">
+      <Filter>Source\ForTestTP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ForTestTP\ForTestTPGameMode.h">
+      <Filter>Source\ForTestTP</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
