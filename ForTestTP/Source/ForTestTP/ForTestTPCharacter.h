@@ -68,5 +68,17 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	FVector Start;
+	FVector ForwardVector;
+	FVector End;
+
+	FHitResult Hit;
+	FCollisionQueryParams QueryParams;
+
+	class AInteractableEntity* item;
+
+	void Tick(float DeltaSeconds);
+	void Tracecheck();
 };
 

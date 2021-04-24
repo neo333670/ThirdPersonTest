@@ -8,6 +8,9 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
+#include "InteractableEntity.h"
+#include "DrawDebugHelpers.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AForTestTPCharacter
@@ -136,5 +139,42 @@ void AForTestTPCharacter::MoveRight(float Value)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
+	}
+}
+
+void AForTestTPCharacter::Tick(float DeltaSeconds) {
+	Tracecheck();
+}
+
+void AForTestTPCharacter::Tracecheck() {
+	Start = CameraBoom->GetComponentLocation();
+	ForwardVector = CameraBoom->GetForwardVector();
+	End = ((ForwardVector * 200.0f) + Start);
+
+	DrawDebugLine(GetWorld(), Start, End, FColor::Blue, false, -1, 0, 1);
+
+	// Ignore the player's pawn
+	//Params.AddIgnoredActor(GetPawn());
+	// The hit result gets populated by the line trace
+
+	// Raycast out from the camera, only collide with pawns (they are on the ECC_Pawn collision channel)
+
+	QueryParams = FCollisionQueryParams("", false, GetOwner());
+	bool bIsHIt = GetWorld()->LineTraceSingleByChannel(Hit, Start, End,
+		ECollisionChannel::ECC_Visibility, QueryParams, FCollisionResponseParams::DefaultResponseParam);
+	if (bIsHIt) {
+		if (bool bHasTag = Hit.GetActor()->ActorHasTag("bInteract")) {
+			//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("bInteract"));
+
+			item = Cast<AInteractableEntity>(Hit.GetActor());
+			if (item != nullptr) {
+				item->Interact();
+			}
+			else {
+				GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("not box"));
+			}
+		}
+		else { GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("This Entity cant interact")); }
+
 	}
 }

@@ -2,12 +2,12 @@
 	"Targets": [
 		{
 			"Name": "ForTestTP",
-			"Path": "D:\\Create with code\\UE4\\ForTestTP\\ThirdPersonTest\\ForTestTP\\Source\\ForTestTP.Target.cs",
+			"Path": "C:\\Neo\\UE4\\ThirdPersonTest\\ForTestTP\\Source\\ForTestTP.Target.cs",
 			"Type": "Game"
 		},
 		{
 			"Name": "ForTestTPEditor",
-			"Path": "D:\\Create with code\\UE4\\ForTestTP\\ThirdPersonTest\\ForTestTP\\Source\\ForTestTPEditor.Target.cs",
+			"Path": "C:\\Neo\\UE4\\ThirdPersonTest\\ForTestTP\\Source\\ForTestTPEditor.Target.cs",
 			"Type": "Editor"
 		}
 	]

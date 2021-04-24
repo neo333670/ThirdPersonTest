@@ -254,16 +254,16 @@
 /I ThirdParty\PhysX3\APEX_1.4\shared\general\PairFilter\include
 /I ThirdParty\PhysX3\APEX_1.4\shared\internal\include
 /I "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\INCLUDE"
-/I "C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"
+/I "C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"
-/I "D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine"
-/Yc"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
-"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.cpp"
-/Fo"D:\Create with code\UE4\ForTestTP\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+/I C:\Neo\UE4\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine
+/Yc"C:\Neo\UE4\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Fp"C:\Neo\UE4\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
+"C:\Neo\UE4\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.cpp"
+/Fo"C:\Neo\UE4\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\ForTestTPEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
 /TP
 /GR-
 /W4
