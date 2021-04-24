@@ -16,11 +16,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define ForTestTP_Source_ForTestTP_Public_InteractableEntity_h_12_SPARSE_DATA
 #define ForTestTP_Source_ForTestTP_Public_InteractableEntity_h_12_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execShowText); \
 	DECLARE_FUNCTION(execInteract);
 
 
 #define ForTestTP_Source_ForTestTP_Public_InteractableEntity_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execShowText); \
 	DECLARE_FUNCTION(execInteract);
 
 

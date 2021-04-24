@@ -35,6 +35,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Interact();
 
-	void ShowText();
+	UFUNCTION(BlueprintCallable)
+	static void ShowText();
 
 };

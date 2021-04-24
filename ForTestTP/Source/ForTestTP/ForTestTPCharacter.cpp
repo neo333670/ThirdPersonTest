@@ -168,7 +168,7 @@ void AForTestTPCharacter::Tracecheck() {
 
 			item = Cast<AInteractableEntity>(Hit.GetActor());
 			if (item != nullptr) {
-				item->Interact();
+				item->ShowText();
 			}
 			else {
 				GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("not box"));

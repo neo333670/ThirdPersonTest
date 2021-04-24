@@ -36,10 +36,11 @@ void AInteractableEntity::Tick(float DeltaTime)
 }
 
 void AInteractableEntity::Interact() {
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Interact Activaty"));
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Interact Activaty"));
 }
 
 void AInteractableEntity::ShowText() {
-
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("[E] Interact"));
+	//outputText->SetVisibility(true);
 }
 
