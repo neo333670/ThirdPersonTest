@@ -48,6 +48,8 @@ AForTestTPCharacter::AForTestTPCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+	isTouching = false;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -162,19 +164,22 @@ void AForTestTPCharacter::Tracecheck() {
 	QueryParams = FCollisionQueryParams("", false, GetOwner());
 	bool bIsHIt = GetWorld()->LineTraceSingleByChannel(Hit, Start, End,
 		ECollisionChannel::ECC_Visibility, QueryParams, FCollisionResponseParams::DefaultResponseParam);
-	if (bIsHIt) {
+	if (bIsHIt ) {
 		if (bool bHasTag = Hit.GetActor()->ActorHasTag("bInteract")) {
-			//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("bInteract"));
-
+			GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Yellow, TEXT("Press E: Interact"));
+			if (!isTouching) {
+				//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Press E: Interact"));
+				isTouching = true;
+			}
 			item = Cast<AInteractableEntity>(Hit.GetActor());
 			if (item != nullptr) {
-				item->ShowText();
-			}
-			else {
-				GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("not box"));
+				
 			}
 		}
-		else { GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("This Entity cant interact")); }
+		else { GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Yellow, TEXT("This Entity cant interact")); }
 
+	}
+	else { 
+		isTouching = false;
 	}
 }

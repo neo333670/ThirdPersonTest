@@ -20,9 +20,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class UStaticMeshComponent* shape;
+private:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class UTextRenderComponent* outputText;
+	bool isDetected;
 
 protected:
 	// Called when the game starts or when spawned
@@ -34,8 +34,5 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void Interact();
-
-	UFUNCTION(BlueprintCallable)
-	static void ShowText();
 
 };

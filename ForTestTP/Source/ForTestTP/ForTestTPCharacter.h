@@ -72,6 +72,7 @@ public:
 	FVector Start;
 	FVector ForwardVector;
 	FVector End;
+	bool isTouching;
 
 	FHitResult Hit;
 	FCollisionQueryParams QueryParams;

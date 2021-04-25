@@ -17,8 +17,7 @@ AInteractableEntity::AInteractableEntity()
 	shape = CreateAbstractDefaultSubobject<UStaticMeshComponent>(TEXT("Shape"));
 	shape->SetupAttachment(center);
 
-	outputText = CreateAbstractDefaultSubobject<UTextRenderComponent>(TEXT("Output Text"));
-	outputText->SetupAttachment(center);
+	isDetected = false;
 }
 
 // Called when the game starts or when spawned
@@ -32,15 +31,11 @@ void AInteractableEntity::BeginPlay()
 void AInteractableEntity::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 void AInteractableEntity::Interact() {
-	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Interact Activaty"));
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Interact Activaty"));
 }
 
-void AInteractableEntity::ShowText() {
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("[E] Interact"));
-	//outputText->SetVisibility(true);
-}
+
 

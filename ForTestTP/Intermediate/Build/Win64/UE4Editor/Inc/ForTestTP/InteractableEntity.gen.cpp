@@ -19,15 +19,7 @@ void EmptyLinkFunctionForGeneratedCodeInteractableEntity() {}
 	UPackage* Z_Construct_UPackage__Script_ForTestTP();
 	ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
-	ENGINE_API UClass* Z_Construct_UClass_UTextRenderComponent_NoRegister();
 // End Cross Module References
-	DEFINE_FUNCTION(AInteractableEntity::execShowText)
-	{
-		P_FINISH;
-		P_NATIVE_BEGIN;
-		AInteractableEntity::ShowText();
-		P_NATIVE_END;
-	}
 	DEFINE_FUNCTION(AInteractableEntity::execInteract)
 	{
 		P_FINISH;
@@ -40,7 +32,6 @@ void EmptyLinkFunctionForGeneratedCodeInteractableEntity() {}
 		UClass* Class = AInteractableEntity::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
 			{ "Interact", &AInteractableEntity::execInteract },
-			{ "ShowText", &AInteractableEntity::execShowText },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -66,28 +57,6 @@ void EmptyLinkFunctionForGeneratedCodeInteractableEntity() {}
 		}
 		return ReturnFunction;
 	}
-	struct Z_Construct_UFunction_AInteractableEntity_ShowText_Statics
-	{
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UE4CodeGen_Private::FFunctionParams FuncParams;
-	};
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AInteractableEntity_ShowText_Statics::Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/InteractableEntity.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AInteractableEntity_ShowText_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AInteractableEntity, nullptr, "ShowText", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AInteractableEntity_ShowText_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AInteractableEntity_ShowText_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_AInteractableEntity_ShowText()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AInteractableEntity_ShowText_Statics::FuncParams);
-		}
-		return ReturnFunction;
-	}
 	UClass* Z_Construct_UClass_AInteractableEntity_NoRegister()
 	{
 		return AInteractableEntity::StaticClass();
@@ -107,10 +76,6 @@ void EmptyLinkFunctionForGeneratedCodeInteractableEntity() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_shape_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_shape;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_outputText_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_outputText;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -121,7 +86,6 @@ void EmptyLinkFunctionForGeneratedCodeInteractableEntity() {}
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AInteractableEntity_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_AInteractableEntity_Interact, "Interact" }, // 1180491776
-		{ &Z_Construct_UFunction_AInteractableEntity_ShowText, "ShowText" }, // 1254925838
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AInteractableEntity_Statics::Class_MetaDataParams[] = {
@@ -145,18 +109,9 @@ void EmptyLinkFunctionForGeneratedCodeInteractableEntity() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AInteractableEntity_Statics::NewProp_shape = { "shape", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AInteractableEntity, shape), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AInteractableEntity_Statics::NewProp_shape_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AInteractableEntity_Statics::NewProp_shape_MetaData)) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AInteractableEntity_Statics::NewProp_outputText_MetaData[] = {
-		{ "Category", "InteractableEntity" },
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Public/InteractableEntity.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AInteractableEntity_Statics::NewProp_outputText = { "outputText", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AInteractableEntity, outputText), Z_Construct_UClass_UTextRenderComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AInteractableEntity_Statics::NewProp_outputText_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AInteractableEntity_Statics::NewProp_outputText_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AInteractableEntity_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AInteractableEntity_Statics::NewProp_center,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AInteractableEntity_Statics::NewProp_shape,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AInteractableEntity_Statics::NewProp_outputText,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AInteractableEntity_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AInteractableEntity>::IsAbstract,
@@ -185,7 +140,7 @@ void EmptyLinkFunctionForGeneratedCodeInteractableEntity() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AInteractableEntity, 3028066105);
+	IMPLEMENT_CLASS(AInteractableEntity, 3887396609);
 	template<> FORTESTTP_API UClass* StaticClass<AInteractableEntity>()
 	{
 		return AInteractableEntity::StaticClass();
