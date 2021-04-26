@@ -1,5 +1,0 @@
-D:\Create with code\UE4\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Development\ForTestTP\Definitions.ForTestTP.h
-D:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
-D:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-D:\Create with code\UE4\ThirdPersonTest\ForTestTP\Source\ForTestTP/Public/InteractableEntity.h
-D:\Create with code\UE4\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Inc\ForTestTP\InteractableEntity.generated.h

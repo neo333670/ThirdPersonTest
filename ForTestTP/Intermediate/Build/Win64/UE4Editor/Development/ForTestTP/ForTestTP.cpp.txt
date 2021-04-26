@@ -1,2 +1,0 @@
-D:\Create with code\UE4\ThirdPersonTest\ForTestTP\Intermediate\Build\Win64\UE4Editor\Development\ForTestTP\Definitions.ForTestTP.h
-D:\Create with code\UE4\ThirdPersonTest\ForTestTP\Source\ForTestTP\ForTestTP.h
