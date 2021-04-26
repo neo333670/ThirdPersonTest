@@ -21,11 +21,11 @@ protected:
 
 public:
 
-	//UProperty(EditAnywhere)
-	UStaticMeshComponent* Mymesh;
+	UPROPERTY(EditAnywhere)
+	class UStaticMeshComponent* Mymesh;
 
-	//UProperty(EditAnywhere)
-	USceneComponent* HoldingComp;
+	UPROPERTY(EditAnywhere)
+	class USceneComponent* HoldingComp;
 	
 	bool bHolding;
 	bool bGravity;
