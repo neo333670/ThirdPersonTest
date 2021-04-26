@@ -40,5 +40,23 @@ void APickupEntity::BeginPlay()
 	}
 }
 
-void APickupEntity::Pickup() {}
+void APickupEntity::Pickup() {
+	bGravity = !bGravity;
+	bHolding = !bHolding;
+
+	Mymesh->SetEnableGravity(bGravity);
+	Mymesh->SetSimulatePhysics(bHolding ? false : true);
+	Mymesh->SetCollisionEnabled(bHolding ? ECollisionEnabled::NoCollision : ECollisionEnabled::QueryAndPhysics);
+
+	if (HoldingComp && bHolding) {
+		Mymesh->AttachToComponent(HoldingComp, FAttachmentTransformRules::KeepWorldTransform);
+		SetActorLocation(HoldingComp->GetComponentLocation());
+	}
+	
+	if (!bHolding) {
+		Mymesh->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
+		ForwardVector = PlayerCamera->GetForwardVector();
+		//Mymesh->AddForce(forwa)
+	}
+}
 
