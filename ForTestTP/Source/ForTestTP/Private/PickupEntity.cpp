@@ -4,6 +4,7 @@
 #include "PickupEntity.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetStringLibrary.h"
 #include "GameFramework/Character.h"
 
 // Sets default values
@@ -29,15 +30,18 @@ void APickupEntity::BeginPlay()
 	PlayerCamera = MyCharacter->FindComponentByClass<UCameraComponent>();
 	
 	TArray<USceneComponent*> Components;
+	MyCharacter->GetComponents(Components);
 
 	if (Components.Num() > 0) {
 		for (auto& Comp : Components) {
 			if (Comp->GetName() == "HoldingComponent") {
+				GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Yellow, TEXT("Finded"));
 				HoldingComp = Cast<USceneComponent>(Comp);
 			}
+			else { GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Yellow, TEXT("not Finded")); }
 		}
-
 	}
+	else { GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Yellow, TEXT("Components.Num() == 0")); }
 }
 
 void APickupEntity::Pickup() {
@@ -48,7 +52,10 @@ void APickupEntity::Pickup() {
 	Mymesh->SetSimulatePhysics(bHolding ? false : true);
 	Mymesh->SetCollisionEnabled(bHolding ? ECollisionEnabled::NoCollision : ECollisionEnabled::QueryAndPhysics);
 
+	GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Yellow, UKismetStringLibrary::Conv_BoolToString(bHolding));
+
 	if (HoldingComp && bHolding) {
+		GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Yellow, TEXT("should be picked"));
 		Mymesh->AttachToComponent(HoldingComp, FAttachmentTransformRules::KeepWorldTransform);
 		SetActorLocation(HoldingComp->GetComponentLocation());
 	}

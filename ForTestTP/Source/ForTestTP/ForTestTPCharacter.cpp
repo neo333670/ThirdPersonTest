@@ -10,6 +10,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "InteractableEntity.h"
+#include "PickupEntity.h"
 #include "DrawDebugHelpers.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -50,6 +51,19 @@ AForTestTPCharacter::AForTestTPCharacter()
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 
 	isTouching = false;
+
+	Location = CreateDefaultSubobject<USceneComponent>(TEXT("Location"));
+	Location->SetupAttachment(CameraBoom);
+	Location->SetRelativeLocation(FVector(0.000004, 53.999992, 10.000000));
+	Location->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
+
+	HoldingComponent = CreateDefaultSubobject<USceneComponent>(TEXT("HoldingComponent"));
+	//HoldingComponent->RelativeLocation.X = 50.0f;
+	HoldingComponent->SetupAttachment(Location);
+	
+
+	CurrentItem = NULL;
+	bCanMove = true;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -74,11 +88,14 @@ void AForTestTPCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 	PlayerInputComponent->BindAxis("LookUpRate", this, &AForTestTPCharacter::LookUpAtRate);
 
 	// handle touch devices
-	PlayerInputComponent->BindTouch(IE_Pressed, this, &AForTestTPCharacter::TouchStarted);
-	PlayerInputComponent->BindTouch(IE_Released, this, &AForTestTPCharacter::TouchStopped);
+	//PlayerInputComponent->BindTouch(IE_Pressed, this, &AForTestTPCharacter::TouchStarted);
+	//PlayerInputComponent->BindTouch(IE_Released, this, &AForTestTPCharacter::TouchStopped);
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AForTestTPCharacter::OnResetVR);
+	
+	//action for pickup
+	PlayerInputComponent->BindAction("Action", IE_Pressed, this, &AForTestTPCharacter::OnAction);
 }
 
 
@@ -92,7 +109,7 @@ void AForTestTPCharacter::OnResetVR()
 	//		Comment or delete the call to ResetOrientationAndPosition below (appropriate if not supporting VR)
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
 }
-
+/**
 void AForTestTPCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
 		Jump();
@@ -102,6 +119,7 @@ void AForTestTPCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Lo
 {
 		StopJumping();
 }
+**/
 
 void AForTestTPCharacter::TurnAtRate(float Rate)
 {
@@ -117,7 +135,7 @@ void AForTestTPCharacter::LookUpAtRate(float Rate)
 
 void AForTestTPCharacter::MoveForward(float Value)
 {
-	if ((Controller != nullptr) && (Value != 0.0f))
+	if ((Controller != nullptr) && (Value != 0.0f) && bCanMove)
 	{
 		// find out which way is forward
 		const FRotator Rotation = Controller->GetControlRotation();
@@ -131,7 +149,7 @@ void AForTestTPCharacter::MoveForward(float Value)
 
 void AForTestTPCharacter::MoveRight(float Value)
 {
-	if ( (Controller != nullptr) && (Value != 0.0f) )
+	if ( (Controller != nullptr) && (Value != 0.0f) && bCanMove)
 	{
 		// find out which way is right
 		const FRotator Rotation = Controller->GetControlRotation();
@@ -145,7 +163,22 @@ void AForTestTPCharacter::MoveRight(float Value)
 }
 
 void AForTestTPCharacter::Tick(float DeltaSeconds) {
-	Tracecheck();
+	//Tracecheck();
+	Start = CameraBoom->GetComponentLocation();
+	ForwardVector = CameraBoom->GetForwardVector();
+	End = ((ForwardVector * 200.0f) + Start);
+
+	DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, -1, 0, 1);
+
+	if (!bHoldingItem) {
+		if (GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility,
+			QueryParams, DefaultResponseParam)) {
+			if (Hit.GetActor()->GetClass()->IsChildOf(APickupEntity::StaticClass())) {
+				CurrentItem = Cast<APickupEntity>(Hit.GetActor());
+			}
+		}
+		else { CurrentItem = NULL; }
+	}
 }
 
 void AForTestTPCharacter::Tracecheck() {
@@ -181,5 +214,30 @@ void AForTestTPCharacter::Tracecheck() {
 	}
 	else { 
 		isTouching = false;
+	}
+}
+
+void AForTestTPCharacter::OnAction() {
+	if (CurrentItem) {
+		ToggleItemPickup();
+	}
+}
+// toggle player movement
+void AForTestTPCharacter::ToggleMovement(){
+	bCanMove = !bCanMove;
+	FollowCamera->bUsePawnControlRotation = !FollowCamera->bUsePawnControlRotation;
+	bUseControllerRotationYaw = !bUseControllerRotationYaw;
+}
+
+// toggle holding item pickup
+void AForTestTPCharacter::ToggleItemPickup() {
+	GEngine->AddOnScreenDebugMessage(1, 2, FColor::Yellow, TEXT("Pick"));
+	if (CurrentItem) {
+		bHoldingItem = !bHoldingItem;
+		CurrentItem->Pickup();
+
+		if (!bHoldingItem) {
+			CurrentItem = NULL;
+		}
 	}
 }

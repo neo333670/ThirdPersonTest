@@ -53,10 +53,10 @@ protected:
 	void LookUpAtRate(float Rate);
 
 	/** Handler for when a touch input begins. */
-	void TouchStarted(ETouchIndex::Type FingerIndex, FVector Location);
+	//void TouchStarted(ETouchIndex::Type FingerIndex, FVector Location);
 
 	/** Handler for when a touch input stops. */
-	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
+	//oid TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
 protected:
 	// APawn interface
@@ -69,6 +69,12 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
+	UPROPERTY(EditAnywhere)
+		class USceneComponent* Location;
+
+	UPROPERTY(EditAnywhere)
+		class USceneComponent* HoldingComponent;
+
 	FVector Start;
 	FVector ForwardVector;
 	FVector End;
@@ -76,10 +82,24 @@ public:
 
 	FHitResult Hit;
 	FCollisionQueryParams QueryParams;
+	FCollisionResponseParams DefaultResponseParam;
 
 	class AInteractableEntity* item;
 
 	void Tick(float DeltaSeconds);
 	void Tracecheck();
+
+	UPROPERTY(EditAnywhere)
+		class APickupEntity* CurrentItem;
+	bool bHoldingItem;
+	bool bCanMove;
+
+	UFUNCTION()
+	void OnAction();
+	// toggle player movement
+	void ToggleMovement();
+
+	// toggle holding item pickup
+	void ToggleItemPickup();
 };
 
