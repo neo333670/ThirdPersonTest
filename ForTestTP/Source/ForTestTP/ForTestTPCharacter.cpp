@@ -175,6 +175,9 @@ void AForTestTPCharacter::Tick(float DeltaSeconds) {
 	if (!bHoldingItem) {
 		if (GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility,
 			QueryParams, DefaultResponseParam)) {
+			FString HIt_name = Hit.GetActor()->GetClass()->GetDefaultObjectName().ToString();
+			GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Red, HIt_name);
+
 			if (Hit.GetActor()->GetClass()->IsChildOf(APickupEntity::StaticClass())) {
 				CurrentItem = Cast<APickupEntity>(Hit.GetActor());
 			}
