@@ -9,6 +9,7 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Kismet/GameplayStatics.h"
 #include "InteractableEntity.h"
 #include "PickupEntity.h"
 #include "DrawDebugHelpers.h"
@@ -96,6 +97,7 @@ void AForTestTPCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 	
 	//action for pickup
 	PlayerInputComponent->BindAction("Action", IE_Pressed, this, &AForTestTPCharacter::OnAction);
+	PlayerInputComponent->BindAction("ChangeLevel", IE_Pressed, this, &AForTestTPCharacter::ChangeLevel);
 }
 
 
@@ -223,10 +225,12 @@ void AForTestTPCharacter::OnAction() {
 	}
 }
 // toggle player movement
-void AForTestTPCharacter::ToggleMovement(){
-	bCanMove = !bCanMove;
-	FollowCamera->bUsePawnControlRotation = !FollowCamera->bUsePawnControlRotation;
-	bUseControllerRotationYaw = !bUseControllerRotationYaw;
+void AForTestTPCharacter::ChangeLevel(){
+	if (LevelNumber == 0) {
+		UGameplayStatics::OpenLevel(this, FName("Main"), true);
+		LevelNumber = 1;
+		GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Yellow, TEXT("Load Main"));
+	}
 }
 
 // toggle holding item pickup

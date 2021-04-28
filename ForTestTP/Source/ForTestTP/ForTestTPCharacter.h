@@ -94,12 +94,15 @@ public:
 	bool bHoldingItem;
 	bool bCanMove;
 
+	int LevelNumber;
 	UFUNCTION()
 	void OnAction();
-	// toggle player movement
-	void ToggleMovement();
+
+	UFUNCTION()
+		void ChangeLevel();
 
 	// toggle holding item pickup
 	void ToggleItemPickup();
 };
+
 

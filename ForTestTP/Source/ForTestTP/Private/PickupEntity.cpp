@@ -38,7 +38,7 @@ void APickupEntity::BeginPlay()
 				GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Yellow, TEXT("Finded"));
 				HoldingComp = Cast<USceneComponent>(Comp);
 			}
-			else { GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Yellow, TEXT("not Finded")); }
+			//else { GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Yellow, TEXT("not Finded")); }
 		}
 	}
 	else { GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Yellow, TEXT("Components.Num() == 0")); }
