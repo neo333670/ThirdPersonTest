@@ -175,14 +175,22 @@ void AForTestTPCharacter::Tick(float DeltaSeconds) {
 	if (!bHoldingItem) {
 		if (GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility,
 			QueryParams, DefaultResponseParam)) {
-			FString HIt_name = Hit.GetActor()->GetClass()->GetDefaultObjectName().ToString();
-			GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Red, HIt_name);
+			//FString HIt_name = Hit.GetActor()->GetClass()->GetDefaultObjectName().ToString();
+			//GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Red, HIt_name);
+
+			if (Hit.GetActor()->ActorHasTag("bInteract")) {
+				isTouching = true;
+				ItemPos = Hit.GetActor()->GetActorLocation();
+			}
 
 			if (Hit.GetActor()->GetClass()->IsChildOf(APickupEntity::StaticClass())) {
 				CurrentItem = Cast<APickupEntity>(Hit.GetActor());
 			}
 		}
-		else { CurrentItem = NULL; }
+		else { 
+			CurrentItem = NULL;
+			isTouching = false;
+		}
 	}
 }
 
@@ -192,12 +200,6 @@ void AForTestTPCharacter::Tracecheck() {
 	End = ((ForwardVector * 200.0f) + Start);
 
 	DrawDebugLine(GetWorld(), Start, End, FColor::Blue, false, -1, 0, 1);
-
-	// Ignore the player's pawn
-	//Params.AddIgnoredActor(GetPawn());
-	// The hit result gets populated by the line trace
-
-	// Raycast out from the camera, only collide with pawns (they are on the ECC_Pawn collision channel)
 
 	QueryParams = FCollisionQueryParams("", false, GetOwner());
 	bool bIsHIt = GetWorld()->LineTraceSingleByChannel(Hit, Start, End,
@@ -248,3 +250,6 @@ void AForTestTPCharacter::ToggleItemPickup() {
 		}
 	}
 }
+
+FVector AForTestTPCharacter::GetItemPos() { return ItemPos; }
+bool AForTestTPCharacter::IsTouching() { return isTouching; }

@@ -34,6 +34,6 @@ public:
 	class UCameraComponent* PlayerCamera;
 	FVector ForwardVector;
 
-	UFUNCTION()
-		void Pickup();
+	UFUNCTION(BlueprintCallable)
+		virtual void Pickup();
 };

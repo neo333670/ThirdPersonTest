@@ -61,9 +61,7 @@ void APickupEntity::Pickup() {
 	}
 	
 	if (!bHolding) {
-		Mymesh->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
-		ForwardVector = PlayerCamera->GetForwardVector();
-		//Mymesh->AddForce(forwa)
+		Mymesh->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);		
 	}
 }
 
